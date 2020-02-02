@@ -15,6 +15,11 @@ body {
     color: #FF6B6B;
 }
 
+#vue-app{
+    padding: 20px;
+    color: #1A535C;
+}
+
 h1.title {
     text-align: center;
 }

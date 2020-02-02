@@ -15,10 +15,6 @@ Build
 npm run build
 ```
 
-## Stage 1
+## Stage 2
 
-Here we only have our simple AngularJS platform.
-
-Basically there are three different pages (landing, login and content) plus the root. The router (ui-router) manages to go to selected route. 
-
-In the following stages we will be writing another application in VueJS, and eventually both apps will "coexists" thanks to a layer above them that will show either of them, depending on the route.
+We have created a simple Vuejs app with a route to an /about page. The part of the angular app div containers in the index.html file has been commented, leaving only the container for the Vue application. So basically just running a Vuejs app at the moment.
