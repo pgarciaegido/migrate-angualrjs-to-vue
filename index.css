@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+html, body, h1, p {
+    margin: 0;
+}
+
+
+body {
+    background-color: #F7FFF7;
+    font-family: 'Playfair Display', serif;
+}
+
+#main {
+    padding: 20px;
+    color: #FF6B6B;
+}
+
+h1.title {
+    text-align: center;
+}
+
+h1.content-text {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 100px;
+}
+
+.root p {
+    margin-bottom: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
+
+.back {
+    color: #4ECDC4;
+}
