@@ -1,4 +1,4 @@
-import { changeRoute } from '../angularRoutes';
+import { changeRoute } from '../routes/angularRoutes';
 
 const moduleName = 'app.landing';
 const controllerName = 'LandingController';

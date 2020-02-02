@@ -12,7 +12,7 @@ const router = new VueRouter({
   routes,
 });
 
-new Vue({
+export default new Vue({
   router,
   render: h => h(App),
 }).$mount('#app');

@@ -1,7 +1,7 @@
-import rootTemplate from './root/root.html';
-import landingTemplate from './landing/landing.html';
-import contentTemplate from './content/content.html';
-import loginTemplate from './login/login.html';
+import rootTemplate from '../root/root.html';
+import landingTemplate from '../landing/landing.html';
+import contentTemplate from '../content/content.html';
+import loginTemplate from '../login/login.html';
 
 const routes = [
     { name: 'root', url: '/', template: rootTemplate, controller: 'RootController as vm' },

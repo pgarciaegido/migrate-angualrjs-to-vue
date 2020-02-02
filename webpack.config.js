@@ -6,6 +6,7 @@ module.exports = {
     entry: './index.js',
     output: {
         filename: 'app.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: { 

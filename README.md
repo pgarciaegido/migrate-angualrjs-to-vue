@@ -15,6 +15,5 @@ Build
 npm run build
 ```
 
-## Stage 2
-
-We have created a simple Vuejs app with a route to an /about page. The part of the angular app div containers in the index.html file has been commented, leaving only the container for the Vue application. So basically just running a Vuejs app at the moment.
+## Stage 3
+Here we are checking when the application runs wether we are in a Vue or in an Angular Route. Depending on that, it renders either Angular or Vue application -via dynamic import-.

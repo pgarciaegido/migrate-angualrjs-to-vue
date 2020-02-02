@@ -1,16 +1,14 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import angularjsTemplate from './src/templates/angularjs.html';
+import angularjsTemplate from './templates/angularjs.html';
 
-import './index.css';
+import Landing from './landing/landing';
+import Root from './root/root';
+import Login from './login/login';
+import Content from './content/content';
 
-import Landing from './src/landing/landing';
-import Root from './src/root/root';
-import Login from './src/login/login';
-import Content from './src/content/content';
-
-import { routeConfigs } from './src/routes/angularRoutes';
+import { routeConfigs } from './routes/angularRoutes';
 
 const template = angularjsTemplate;
 
@@ -23,8 +21,7 @@ const controllerAs = 'vm';
 
 const controller = function() {};
 
-const createAngularApp = () => 
-    angular
+export default angular
         .module('application', [
             uiRouter,
             Root,
@@ -36,5 +33,3 @@ const createAngularApp = () =>
         .config(routeConfigs)
         .directive('app', () => ({ template, controller, controllerAs }))
         .run();
-
-export { createAngularApp };
