@@ -8,6 +8,7 @@ html, body, h1, p {
 body {
     background-color: #F7FFF7;
     font-family: 'Playfair Display', serif;
+    display: flex;
 }
 
 #main {
@@ -20,6 +21,10 @@ body {
     color: #1A535C;
 }
 
+.sidebar{
+    color: #4ECDC4;
+}
+
 h1.title {
     text-align: center;
 }
@@ -30,7 +35,7 @@ h1.content-text {
     margin-top: 100px;
 }
 
-.root p {
+.sidebar p {
     margin-bottom: 10px;
 }
 .pointer {

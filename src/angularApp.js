@@ -21,6 +21,9 @@ const controllerAs = 'vm';
 
 const controller = function() {};
 
+// Place $state into Root scope so we can use it from outside the scope of the app!
+const run = ['$state', '$rootScope', ($state, $rootScope) => $rootScope.state = $state];
+
 export default angular
         .module('application', [
             uiRouter,
@@ -32,4 +35,4 @@ export default angular
         .config(config)
         .config(routeConfigs)
         .directive('app', () => ({ template, controller, controllerAs }))
-        .run();
+        .run(run);
