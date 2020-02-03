@@ -15,5 +15,5 @@ Build
 npm run build
 ```
 
-## Stage 3
-Here we are checking when the application runs wether we are in a Vue or in an Angular Route. Depending on that, it renders either Angular or Vue application -via dynamic import-.
+## Stage 4
+We have created another VueJS app that will live on #sidebar div. It will be outside of the main app (either angular or vue), and thanks to the angularToVue.js service, help us with navigation. Let's do the navigation among AngularJS routes.
