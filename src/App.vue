@@ -1,8 +1,5 @@
 <script>
 export default {
-    created() {
-        console.log('App.vue!');
-    },
     data() {
         return {
             name: 'Vue'
@@ -19,7 +16,6 @@ export default {
 <template>
     <div class="root" id="vue-app">
         <h1 class="title">VueJS App</h1>
-        <p class="pointer" @click="toAbout">Go To About</p>
         <router-view></router-view>
     </div>
 </template>

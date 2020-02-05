@@ -1,40 +1,56 @@
 import vueRoutes from './routes/vueRoutes';
+import angularRootTemplate from './templates/angularjs.html';
+import vueRootTemplate from './templates/vuejs.html';
 
 const getPath = () => window.location.pathname;
 
 // This function might need to be improved, but for a simple example it works well
-const isVueRoute = (givenPath) => () => !!vueRoutes.find(({path}) => givenPath.includes(path) || path.includes(givenPath));
+const isVueRoute = (givenPath) => () => !!vueRoutes.find(({path}) => givenPath !== '/' && path.includes(givenPath) || givenPath.includes(path));
 
-const areInAngular = !!document.getElementById('angular-app');
+const areInAngular = () => !!document.getElementById('angular-app');
+
+const addMainAppHtml = (template) => document.getElementById('main-app').innerHTML = template;
+const addVueApp = () => addMainAppHtml(vueRootTemplate);
+const addAngularApp = () => addMainAppHtml(angularRootTemplate);
 
 const pathIsVueRoute = isVueRoute(getPath());
 
-const getAngularScope = () => {
-    return new Promise((resolve, reject) => {
-        import('angular').then((angular) => {
-            return resolve(angular.element(document.querySelector('app')).scope());
-        });
-    });
-}
+const getAngularScope = () => angular.element(document.querySelector('app')).scope();
 
-const UIRouterChangeRoute = (state) => getAngularScope().then(($scope) => $scope.$root.state.go(state));
+const getVueApp = () => window.vueApp.$children[0];
+const destroyAngularApp = () => getAngularScope().$destroy();
+
+const destroyVueApp = () => getVueApp().$destroy();
+
+const UIRouterChangeRoute = (state) => getAngularScope().$root.state.go(state);
 
 const changePage = (headingTo) => {
+    // VUE ROUTE
     if (isVueRoute(headingTo)()) {
-        if (areInAngular) {
-            // Destroy angular app
-            // Bootstrap vue app with selected route
+        if (areInAngular()) {
+            destroyAngularApp();
+            addVueApp();
+            import('./vueApp').then((vueApp) => {
+                const app = vueApp.default();
+                app.$router.push({name: headingTo}).catch(() => {});
+            });
         } else {
-            // Change vue route
+            window.vueApp.$router.push({name: headingTo}).catch(() => {});
         }
+    // ANGULAR ROUTE
     } else {
-        if (areInAngular) {
+        if (areInAngular()) {
             UIRouterChangeRoute(headingTo);
         } else {
-            // Destroy Vue app
-            // Bootstrap angular app with selected route
+            destroyVueApp();
+            addAngularApp();
+            import('./angularApp').then((angularApp) => {
+                angularApp.default();
+                angular.bootstrap(document.querySelector('#angular-app'), ['application']);
+                UIRouterChangeRoute(headingTo);
+            });
         }
     }
 };
 
-export { pathIsVueRoute, changePage };
+export { pathIsVueRoute, changePage, addVueApp, addAngularApp };
