@@ -34,19 +34,22 @@ const changePage = (headingTo) => {
                 const app = vueApp.default();
                 app.$router.push({name: headingTo}).catch(() => {});
             });
+        // We are already in Vue, so just access the vue app, and push the desired route.
         } else {
             window.vueApp.$router.push({name: headingTo}).catch(() => {});
         }
     // ANGULAR ROUTE
     } else {
+        // We are already in Angular, so just access the angular app, and go to the desired route.
         if (areInAngular()) {
             UIRouterChangeRoute(headingTo);
+        // We are currently in Vue.
         } else {
             destroyVueApp();
             addAngularApp();
             import('./angularApp').then((angularApp) => {
                 angularApp.default();
-                angular.bootstrap(document.querySelector('#angular-app'), ['application']);
+                angular.bootstrap(document.querySelector('#angular-app'), ['application' /* this is angular main module name */]);
                 UIRouterChangeRoute(headingTo);
             });
         }
