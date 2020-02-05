@@ -3,10 +3,10 @@ import { isVueRoute } from './src/angularToVue';
 
 if (isVueRoute()) {
     import('./src/vueApp').then((vueApp) => {
-        console.log('se ha cargado el módulo de vueApp');
+        console.log('Vuejs app loaded!');
     });
 } else {
     import('./src/angularApp').then((angularApp) => {
-        console.log('se ha crgado el módulo de angularApp');
+        console.log('AngularJS app loaded!');
     })
 }
